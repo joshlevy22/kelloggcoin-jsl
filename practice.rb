@@ -27,3 +27,47 @@ blockchain = [
 # Anthony's KelloggCoin balance is 2650
 
 # 👇👇👇 Your code HERE 👇👇👇
+
+from_names = []
+to_names = []
+all_names = []
+index = 0
+index_max = blockchain.length
+
+loop do 
+  if index == index_max
+    break
+  end
+  if blockchain[index]["from_user"] != nil
+    from_names.push(blockchain[index]["from_user"])
+    from_names = from_names.uniq
+  end
+  if blockchain[index]["to_user"] != nil
+    to_names.push(blockchain[index]["to_user"])
+    to_names = to_names.uniq
+  end
+  index = index + 1
+end
+
+all_names = (from_names + to_names).uniq
+
+wallets = [{}]
+
+index = 0
+index_max = all_names.length
+
+loop do 
+  if index == index_max
+    break
+  end
+  wallets = wallets + [{"user" => all_names[index], "balance" => 0}]
+  index = index + 1
+end
+
+puts wallets
+
+
+
+
+
+
