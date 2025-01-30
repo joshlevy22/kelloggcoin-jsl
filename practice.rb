@@ -49,15 +49,14 @@ loop do
   index = index + 1
 end
 
-all_names = (from_names + to_names).uniq
+all_names = ((from_names + to_names).uniq)
 
 wallets = [{}]
 
 index = 0
-index_max = all_names.length
 
 loop do 
-  if index == index_max
+  if index == all_names.length
     break
   end
   if index == 0 
@@ -69,10 +68,33 @@ loop do
   index = index + 1
 end
 
-puts wallets
+index = 0
+loop do 
+  if index == blockchain.length
+    break
+  end
+  from_user_location = all_names.index(blockchain[index]["from_user"])
+  to_user_location = all_names.index(blockchain[index]["to_user"])
 
+  if from_user_location != nil
+    wallets[from_user_location]["balance"] = wallets[from_user_location]["balance"] - blockchain[index]["amount"]
+  end
 
+  if to_user_location != nil
+    wallets[to_user_location]["balance"] = wallets[to_user_location]["balance"] + blockchain[index]["amount"]
+  end
+  index = index + 1
+end
 
+index_output = 0
 
-
+loop do 
+  if index_output == wallets.length
+    break
+  end
+  name_output = (wallets[index_output]["user"]).capitalize
+  number_output = (wallets[index_output]["balance"]).to_s
+  puts name_output + "'s KelloggCoin balance is " + number_output
+  index_output = index_output + 1
+end
 
