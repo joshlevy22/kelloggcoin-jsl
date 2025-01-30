@@ -60,7 +60,12 @@ loop do
   if index == index_max
     break
   end
-  wallets = wallets + [{"user" => all_names[index], "balance" => 0}]
+  if index == 0 
+    wallets = [{"user" => all_names[index], "balance" => 0}]
+  end
+  if index != 0 
+    wallets = wallets + [{"user" => all_names[index], "balance" => 0}]
+  end
   index = index + 1
 end
 
