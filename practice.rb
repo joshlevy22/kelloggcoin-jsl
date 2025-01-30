@@ -69,10 +69,12 @@ loop do
 end
 
 index = 0
+
 loop do 
   if index == blockchain.length
     break
   end
+
   from_user_location = all_names.index(blockchain[index]["from_user"])
   to_user_location = all_names.index(blockchain[index]["to_user"])
 
@@ -97,4 +99,3 @@ loop do
   puts name_output + "'s KelloggCoin balance is " + number_output
   index_output = index_output + 1
 end
-
